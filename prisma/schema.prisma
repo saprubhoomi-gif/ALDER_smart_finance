@@ -1,0 +1,99 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id              String   @id @default(uuid())
+  email           String   @unique
+  password        String
+  name            String
+  avatar          String?  @default("AS")
+  monthlySalary   Float    @default(85000)
+  totalBalance    Float    @default(482500)
+  monthlySaving   Float    @default(33000)
+  financialScore  Int      @default(82)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  goals           Goal[]
+  transactions    Transaction[]
+  investments     Investment[]
+  journeys        CommunityJourney[]
+  budgets         BudgetCategory[]
+}
+
+model Goal {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title        String
+  category     String   @default("General") // Home, Education, Travel, Retirement, Emergency
+  icon         String   @default("Home")
+  targetAmount Float
+  savedAmount  Float    @default(0)
+  targetDate   String?  // e.g. "Dec 2028"
+  color        String   @default("blue")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Transaction {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String
+  amount      Float
+  type        String   // "INCOME" | "EXPENSE"
+  category    String   // Housing, Food, Investment, Salary, Entertainment, Utilities
+  date        DateTime @default(now())
+  notes       String?
+}
+
+model Investment {
+  id             String   @id @default(uuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  assetName      String
+  category       String   // "Mutual Funds", "Equity Stocks", "Gold", "Fixed Deposit", "Crypto"
+  investedAmount Float
+  currentValue   Float
+  returnsPct     Float
+  riskLevel      String   @default("Moderate") // "Low", "Moderate", "High"
+  monthlySIP     Float?   @default(0)
+  createdAt      DateTime @default(now())
+}
+
+model CommunityJourney {
+  id           String   @id @default(uuid())
+  userId       String?
+  user         User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  authorName   String
+  avatar       String
+  age          Int
+  profession   String
+  location     String   @default("Mumbai, IN")
+  salaryRange  String
+  netWorth     String
+  storyTitle   String
+  story        String
+  savingsRate  Int
+  matchPct     Int      @default(90)
+  likesCount   Int      @default(12)
+  tags         String   // Comma separated tags e.g. "Home Buying, Frugal, SIP"
+  createdAt    DateTime @default(now())
+}
+
+model BudgetCategory {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  allocated Float
+  spent     Float    @default(0)
+  icon      String   @default("ShoppingBag")
+}

@@ -1,0 +1,192 @@
+.invest-hero-card {
+  background: linear-gradient(135deg, #102a43, #1e4b70);
+  border-radius: 24px;
+  padding: 28px;
+  color: white;
+  box-shadow: 0 20px 50px rgba(16, 42, 67, 0.15);
+  margin-bottom: 30px;
+}
+
+.portfolio-stat span {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #94a3b8;
+}
+
+.portfolio-stat h2 {
+  font-size: 38px;
+  letter-spacing: -0.04em;
+  margin: 6px 0 12px;
+}
+
+.gain-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 100px;
+  color: #34d399;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.invest-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 20px;
+  margin-top: 24px;
+}
+
+.invest-metric-item small {
+  display: block;
+  font-size: 11px;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+
+.invest-metric-item strong {
+  font-size: 18px;
+}
+
+.holdings-table-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+}
+
+.holdings-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.holdings-table th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.holdings-table td {
+  padding: 16px 14px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 13px;
+  color: var(--navy);
+}
+
+.asset-name-cell strong {
+  color: var(--navy);
+  font-size: 14px;
+}
+
+.risk-tag {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.risk-tag.low {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.risk-tag.moderate {
+  background: #eff6ff;
+  color: var(--blue);
+}
+
+.risk-tag.high {
+  background: #fffbeb;
+  color: #d97706;
+}
+
+.sip-pill {
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #f0fdf4;
+  color: #16a34a;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.no-sip {
+  color: #cbd5e1;
+}
+
+.return-positive {
+  color: #16a34a;
+  font-weight: 800;
+}
+
+.sip-calc-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.calc-controls-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 20px 0 28px;
+}
+
+.calc-group label {
+  display: block;
+  font-size: 13px;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.calc-summary-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+}
+
+.calc-box span {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.calc-box h4 {
+  font-size: 20px;
+  color: var(--navy);
+  margin-top: 4px;
+}
+
+.total-box h3 {
+  font-size: 24px;
+  color: var(--blue);
+  margin-top: 4px;
+}
+
+@media (max-width: 900px) {
+  .invest-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  .calc-controls-grid {
+    grid-template-columns: 1fr;
+  }
+  .calc-summary-row {
+    grid-template-columns: 1fr;
+  }
+}
